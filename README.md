@@ -98,7 +98,8 @@ git clone https://github.com/Ashok-Tectonic/SocialMedia_Network_Using_Graph.git
 
 <img width="1914" height="854" alt="Screenshot 2025-11-10 130644" src="https://github.com/user-attachments/assets/7abdcd13-3a09-4365-ab0f-5365ae16102a" />
 
-<img width="1914" height="854" alt="Screenshot 2025-11-10 130644" src="https://github.com/user-attachments/assets/48558b9d-c664-4215-b868-1e9b4cdf2548" />
+<img width="610" height="884" alt="Screenshot 2024-09-19 003629" src="https://github.com/user-attachments/assets/3712bd8d-2482-4afc-a408-a128c5fb34b9" />
+
 
 <img width="520" height="898" alt="Screenshot 2024-09-19 003657" src="https://github.com/user-attachments/assets/b716c636-2dc1-42f9-9ca1-b6c1fceda11a" />
 
