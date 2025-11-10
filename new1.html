@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Network Application</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            color: #fff;
+        }
+
+        h1 {
+            margin-top: 40px;
+            font-size: 2.2em;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-align: center;
+            color: #f9f9f9;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .menu {
+            margin: 30px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        button {
+            background: #fff;
+            border: none;
+            color: #333;
+            padding: 12px 18px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: #222;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        #output {
+            width: 80%;
+            max-width: 700px;
+            margin-bottom: 40px;
+            background: #ffffffcc;
+            color: #222;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            font-size: 15px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #ddd;
+        }
+
+        /* Add a smooth fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #output {
+            animation: fadeIn 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🌐 Social Network Application</h1>
+
+<div class="menu">
+    <button onclick="createGraph()">➕ Create Graph</button>
+    <button onclick="searchPerson()">🔍 Search Social Network</button>
+    <button onclick="visualizeGraph()">📊 Visualize Network</button>
+    <button onclick="viewAllNodes()">👥 View All Nodes</button>
+    <button onclick="findPath()">🧭 Find Connection Path</button>
+</div>
+
+<div id="output">Welcome to the Social Network Application. Use the buttons above to begin!</div>
+
+<footer>Developed by Ashok Kumar © 2025 | SocialMedia-Network-Using-Graph</footer>
+
+<script>
+    async function fetchData(endpoint, data = {}) {
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        return response.json();
+    }
+
+    async function createGraph() {
+        const choice = prompt("1. Add a Node\n2. Remove a Node\n3. Add an Edge\n4. Remove an Edge\n5. Return to Main Menu");
+        let resultText = '';
+        switch (choice) {
+            case '1':
+                const nameToAdd = prompt("Enter the name of the person to add:");
+                resultText = await fetchData('/create', { name: nameToAdd });
+                break;
+            case '2':
+                const nameToRemove = prompt("Enter the name of the person to remove:");
+                resultText = await fetchData('/remove', { name: nameToRemove });
+                break;
+            case '3':
+                const name1 = prompt("Enter person 1 to connect:");
+                const name2 = prompt("Enter person 2 to connect:");
+                resultText = await fetchData('/addEdge', { name1, name2 });
+                break;
+            case '4':
+                const edgeName1 = prompt("Enter person 1 to remove edge:");
+                const edgeName2 = prompt("Enter person 2 to remove edge:");
+                resultText = await fetchData('/removeEdge', { name1: edgeName1, name2: edgeName2 });
+                break;
+            default:
+                resultText = "Returning to Main Menu.";
+                break;
+        }
+        document.getElementById('output').innerText = resultText;
+    }
+
+    async function searchPerson() {
+        const name = prompt("Enter name to view its Social Network:");
+        const result = await fetchData('/search', { name });
+        document.getElementById('output').innerText = result.connections?.join(', ') || 'No connections found.';
+    }
+
+    async function visualizeGraph() {
+        const result = await fetchData('/visualize');
+        document.getElementById('output').innerText = result.graph || 'No graph available.';
+    }
+
+    async function viewAllNodes() {
+        const result = await fetchData('/nodes');
+        document.getElementById('output').innerText = "Nodes in the network:\n" + (result.nodes?.join('\n') || 'No nodes available.');
+    }
+
+    async function findPath() {
+        const startNode = prompt("Enter start node:");
+        const endNode = prompt("Enter end node:");
+        const result = await fetchData('/path', { start: startNode, end: endNode });
+        document.getElementById('output').innerText = result.path?.join(' -> ') || 'No path found.';
+    }
+</script>
+
+</body>
+</html>
+
