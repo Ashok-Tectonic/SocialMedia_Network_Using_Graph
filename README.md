@@ -72,7 +72,7 @@ The **frontend interface** communicates with the **Java backend server** using t
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/Ashok-Tectonic/SocialMedia-Network-Using-Graph.git
+git clone https://github.com/Ashok-Tectonic/SocialMedia_Network_Using_Graph.git
 ````
 
 ### 2️⃣ Run the Backend
@@ -97,6 +97,14 @@ git clone https://github.com/Ashok-Tectonic/SocialMedia-Network-Using-Graph.git
 * 🎨 Enjoy your visualized social graph!
 
 ---
+
+<img width="1914" height="854" alt="Screenshot 2025-11-10 130644" src="https://github.com/user-attachments/assets/7abdcd13-3a09-4365-ab0f-5365ae16102a" />
+
+<img width="1914" height="854" alt="Screenshot 2025-11-10 130644" src="https://github.com/user-attachments/assets/48558b9d-c664-4215-b868-1e9b4cdf2548" />
+
+<img width="520" height="898" alt="Screenshot 2024-09-19 003657" src="https://github.com/user-attachments/assets/b716c636-2dc1-42f9-9ca1-b6c1fceda11a" />
+
+<img width="1860" height="865" alt="Screenshot 2024-09-19 085615" src="https://github.com/user-attachments/assets/a4cc6011-7f93-43b0-a927-c60c17c4c02d" />
 
 ## 🔮 Future Enhancements
 
