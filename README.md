@@ -1,5 +1,3 @@
-# SocialMedia_Network_Using_Graph
-
 
 # 🌐 SocialMedia-Network-Using-Graph
 
